@@ -95,6 +95,14 @@
 (global-set-key (kbd "C-S-h") (lambda () (interactive) (tab-bar-move-tab -1)))
 (global-set-key (kbd "C-S-l") (lambda () (interactive) (tab-bar-move-tab  1)))
 
+(defun tabe()
+  "Create a new tab-bar-mode tab"
+  (interactive)
+  (tab-bar-new-tab)
+  (scratch-buffer))
+
+(tab-bar-mode)
+
 
 ;;; Basics
 ;; Enable transient mark mode
