@@ -1,0 +1,8 @@
+*~
+*.swp
+/auto-save-list
+/eln-cache
+/elpa
+/projectile-bookmarks.eld
+/projects
+/.cache
