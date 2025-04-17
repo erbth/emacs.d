@@ -109,17 +109,60 @@
 ;(transient-mark-mode 1)
 
 
-;;; Org mode configuration
-;; Enable Org mode
-(require 'org)
+;; Org mode
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "~/org/roam"))
+  :bind
+  (("C-c n l" . org-roam-buffer-toggle)
+   ("C-c n f" . org-roam-node-find)
+   ("C-c n g" . org-roam-graph)
+   ("C-c n i" . org-roam-node-insert)
+   ("C-c n c" . org-roam-capture)
+   ;; Dailies
+   ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (setq org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
+  (org-roam-db-autosync-mode))
 
-(setq org-todo-keywords
-      '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
+
+;; Tabs
+(setq-default tab-width 4)
 
 
-;;; P4-16
+;; Modeline
+(column-number-mode t)
+
+
+;;; Programmming languages
+;; C(++)
+(setq-default c-basic-offset 4
+			  tab-width 4
+			  indent-tabs-mode t
+			  c-default-style '"linux")
+
+(add-hook 'c++-mode-hook (lambda () (setq-default display-fill-column-indicator-column 80)
+									(display-fill-column-indicator-mode t)
+									(font-lock-mode t)))
+
+
+;; CMake
+(use-package cmake-mode
+  :ensure t
+  :config
+  (setq-default cmake-tab-width 4))
+
+;; Protobuf
+(use-package protobuf-mode
+  :ensure t)
+
+;; P4-16
 (load-file "~/.emacs.d/p4_16-mode.el")
 (add-to-list 'auto-mode-alist '("\\.p4\\'" . p4_16-mode))
+
+(add-hook 'p4_16-mode (lambda () (setq-default tab-width 4)))
 
 
 (custom-set-variables
@@ -127,7 +170,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(cmake-mode corfu org-roam protobuf-mode treemacs-evil
+				treemacs-projectile vertico)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -166,8 +166,10 @@
   "Indent current line for any balanced-paren-mode'."
   (interactive)
   (let ((indent-col 0)
-        (indentation-increasers "[{(]")
-        (indentation-decreasers "[})]")
+        ; (indentation-increasers "[{(]")
+        ; (indentation-decreasers "[})]")
+        (indentation-increasers "[{]")
+        (indentation-decreasers "[}]")
         )
     (save-excursion
       (beginning-of-line)
