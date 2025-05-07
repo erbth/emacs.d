@@ -19,7 +19,8 @@
   :init
   (evil-mode 1)
   :config
-  (evil-set-undo-system 'undo-redo))
+  (evil-set-undo-system 'undo-redo)
+  (setq evil-symbol-word-search t))
 
 (use-package vertico
   :ensure t
@@ -135,6 +136,10 @@
 ;; Modeline
 (column-number-mode t)
 
+;; Turn on display fill indicator by default
+(setq-default display-fill-column-indicator-column 80)
+(display-fill-column-indicator-mode t)
+
 
 ;;; Programmming languages
 ;; C(++)
@@ -162,7 +167,11 @@
 (load-file "~/.emacs.d/p4_16-mode.el")
 (add-to-list 'auto-mode-alist '("\\.p4\\'" . p4_16-mode))
 
-(add-hook 'p4_16-mode (lambda () (setq-default tab-width 4)))
+(add-hook 'p4_16-mode-hook (lambda ()
+						(setq-default tab-width 4)
+						(setq-default display-fill-column-indicator-column 80)
+						(display-fill-column-indicator-mode t)
+))
 
 
 (custom-set-variables
