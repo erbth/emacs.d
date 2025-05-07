@@ -163,6 +163,12 @@
 (use-package protobuf-mode
   :ensure t)
 
+;; YAML
+(use-package yaml-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+
 ;; P4-16
 (load-file "~/.emacs.d/p4_16-mode.el")
 (add-to-list 'auto-mode-alist '("\\.p4\\'" . p4_16-mode))
