@@ -2,8 +2,12 @@
 
 ;; Install packages
 (require 'package)
+;(add-to-list 'package-archives
+;	     '("melpa" . "https://melpa.org/packages/"))
+
+;; For markdown-mode
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+	     '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 (add-to-list 'package-archives
 	     '("elpa"  . "https://elpa.gnu.org/packages/"))
@@ -152,6 +156,10 @@
 									(display-fill-column-indicator-mode t)
 									(font-lock-mode t)))
 
+(add-hook 'c-mode-hook (lambda () (setq-default display-fill-column-indicator-column 80)
+						 (display-fill-column-indicator-mode t)
+						 (font-lock-mode t)))
+
 
 ;; CMake
 (use-package cmake-mode
@@ -168,6 +176,10 @@
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+
+;; Markdown
+(use-package markdown-mode
+  :ensure t)
 
 ;; P4-16
 (load-file "~/.emacs.d/p4_16-mode.el")
@@ -186,8 +198,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(cmake-mode corfu org-roam protobuf-mode treemacs-evil
-				treemacs-projectile vertico)))
+   '(cmake-mode corfu markdown-mode org-roam protobuf-mode treemacs-evil
+				treemacs-projectile vertico yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
