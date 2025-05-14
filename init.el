@@ -181,6 +181,10 @@
 (use-package markdown-mode
   :ensure t)
 
+(add-hook 'markdown-mode-hook (lambda () (setq-default display-fill-column-indicator-column 80)
+								(display-fill-column-indicator-mode t)
+								(font-lock-mode t)))
+
 ;; P4-16
 (load-file "~/.emacs.d/p4_16-mode.el")
 (add-to-list 'auto-mode-alist '("\\.p4\\'" . p4_16-mode))
