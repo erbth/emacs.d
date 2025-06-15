@@ -1,4 +1,4 @@
-;; -*- mode: elisp -*-
+;; -*- mode: elisp; lexical-binding: nil -*-
 
 ;; Install packages
 (require 'package)

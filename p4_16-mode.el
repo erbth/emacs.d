@@ -1,3 +1,4 @@
+;; -*- mode: elisp; lexical-binding: nil -*-
 ;;; p4_16-mode.el --- Support for the P4_16 programming language
 ;; SPDX-License-Identifier: Apache-2.0
 
