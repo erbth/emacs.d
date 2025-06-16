@@ -196,5 +196,10 @@
 ))
 
 
+;; Python
+(add-hook 'python-mode-hook (lambda () (setq-default display-fill-column-indicator-column 80)
+							  (display-fill-column-indicator-mode t)))
+
+
 ;; Prevent customnize from cluttering init.el
 (setq custom-file "~/.emacs.d/custom.el")
