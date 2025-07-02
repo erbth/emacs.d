@@ -140,9 +140,13 @@
 ;; Modeline
 (column-number-mode t)
 
-;; Turn on display fill indicator by default
+;; Turn on display fill indicator by default and set fill-column
 (setq-default display-fill-column-indicator-column 80)
 (display-fill-column-indicator-mode t)
+(setq-default fill-column 80)
+
+(setq-default comment-auto-fill-only-comments t)
+(setq-default auto-fill-function 'do-auto-fill)
 
 
 ;;; Programmming languages
@@ -166,6 +170,9 @@
   :ensure t
   :config
   (setq-default cmake-tab-width 4))
+
+(add-hook 'cmake-mode-hook (lambda () (setq-default display-fill-column-indicator-column 80)
+							 (display-fill-column-indicator-mode t)))
 
 ;; Protobuf
 (use-package protobuf-mode
@@ -199,6 +206,13 @@
 ;; Python
 (add-hook 'python-mode-hook (lambda () (setq-default display-fill-column-indicator-column 80)
 							  (display-fill-column-indicator-mode t)))
+
+;; PHP
+(use-package php-mode
+  :ensure t)
+
+(add-hook 'php-mode-hook (lambda () (setq-default display-fill-column-indicator-column 80)
+						   (display-fill-column-indicator-mode t)))
 
 
 ;; Prevent customnize from cluttering init.el
