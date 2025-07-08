@@ -183,7 +183,8 @@
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-  (setq tab-width 2))
+  (setq tab-width 2
+		indent-tabs-mode nil))
 
 ;; Markdown
 (use-package markdown-mode
