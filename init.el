@@ -109,6 +109,15 @@
 (tab-bar-mode)
 
 
+;; xref key bindings
+(add-hook 'xref--xref-buffer-mode-hook
+		  (lambda ()
+			(define-key evil-normal-state-local-map
+						(kbd "RET") 'xref-goto-xref)
+			(define-key evil-normal-state-local-map
+						(kbd "TAB") 'xref-quit-and-goto-xref)))
+
+
 ;;; Basics
 ;; Enable transient mark mode
 ;(transient-mark-mode 1)
