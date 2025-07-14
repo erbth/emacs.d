@@ -103,8 +103,7 @@
 (defun tabe()
   "Create a new tab-bar-mode tab"
   (interactive)
-  (tab-bar-new-tab)
-  (scratch-buffer))
+  (tab-bar-new-tab))
 
 (tab-bar-mode)
 
